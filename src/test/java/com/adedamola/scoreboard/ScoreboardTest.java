@@ -73,4 +73,12 @@ public class ScoreboardTest {
         Assertions.assertEquals(5, match.getAwayScore());
     }
 
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testUpdateScoresWhenTheNatchDoesNotExist() {
+        ScoreboardManager scoreboardManager = new Scoreboard();
+        scoreboardManager.updateScore("Mexico", "Canada", 4, 5);
+    }
+
+
 }

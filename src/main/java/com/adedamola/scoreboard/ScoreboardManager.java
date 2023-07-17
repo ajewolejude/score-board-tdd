@@ -8,4 +8,6 @@ public interface ScoreboardManager {
     List<Match> getMatchesSummary();
 
     void updateScore(String homeTeam, String awayTeam, int homeScore, int awayScore);
+
+    void finishMatch(String homeTeam, String awayTeam);
 }

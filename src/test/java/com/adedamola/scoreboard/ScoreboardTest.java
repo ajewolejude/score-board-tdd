@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ScoreboardTest {
     private ScoreboardManager scoreboardManager =  new Scoreboard();
@@ -129,6 +130,19 @@ public class ScoreboardTest {
         Assertions.assertEquals(2, matches.get(1).getAwayScore());
         Assertions.assertEquals(0, matches.get(2).getHomeScore());
         Assertions.assertEquals(1, matches.get(2).getAwayScore());
+    }
+
+    @Test
+    public void testReturnFormattedMatchSummary() {
+        scoreboardManager.startMatch("Mexico", "Canada");
+        scoreboardManager.startMatch("Spain", "Brazil");
+        scoreboardManager.startMatch("Morocco", "England");
+        scoreboardManager.updateScore("Mexico", "Canada", 2, 2);
+        scoreboardManager.updateScore("Spain", "Brazil", 7, 1);
+        scoreboardManager.updateScore("Morocco", "England", 0, 1);
+
+        String summary = scoreboardManager.getFormattedMatchesSummary();
+        assertNotNull(summary);
     }
 
 

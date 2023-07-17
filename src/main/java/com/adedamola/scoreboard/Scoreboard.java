@@ -31,10 +31,12 @@ public class Scoreboard implements ScoreboardManager {
     @Override
     public void updateScore(String homeTeam, String awayTeam, int homeScore, int awayScore) {
         Match match = findMatch(homeTeam, awayTeam);
-        if (match != null) {
-            match.setHomeScore(homeScore);
-            match.setAwayScore(awayScore);
+        if (match == null) {
+            throw new IllegalArgumentException("Match does not exist");
         }
+        match.setHomeScore(homeScore);
+        match.setAwayScore(awayScore);
+
     }
 
     private Match findMatch(String homeTeam, String awayTeam) {

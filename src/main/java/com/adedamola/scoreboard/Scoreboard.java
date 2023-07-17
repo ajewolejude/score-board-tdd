@@ -28,4 +28,9 @@ public class Scoreboard implements ScoreboardManager {
         return summary;
     }
 
+    @Override
+    public void updateScore(String homeTeam, String awayTeam, int homeScore, int awayScore) {
+
+    }
+
 }

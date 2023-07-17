@@ -2,28 +2,15 @@ package com.adedamola.scoreboard;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-
-import java.security.PrivateKey;
 import java.util.List;
-import java.util.PropertyResourceBundle;
 
 import static org.junit.Assert.assertEquals;
 
 public class ScoreboardTest {
-
-    private List<Match> matches;
-
-    private ScoreboardManager scoreboardManager;
-
-    @BeforeEach
-    public void setup() {
-        scoreboardManager = new Scoreboard();
-    }
+    private ScoreboardManager scoreboardManager =  new Scoreboard();
 
     @Test
     public void testStartMatch() {
-         scoreboardManager = new Scoreboard();
         String homeTeam = "Mexico";
         String awayTeam = "Canada";
 
@@ -32,7 +19,6 @@ public class ScoreboardTest {
 
     @Test
     public void testStartOneMatch() {
-         scoreboardManager = new Scoreboard();
         String homeTeam = "Mexico";
         String awayTeam = "Canada";
 
@@ -43,7 +29,6 @@ public class ScoreboardTest {
 
     @Test
     public void testStartMultipleMatchesAndCheckSummary() {
-        scoreboardManager = new Scoreboard();
         scoreboardManager.startMatch("Mexico", "Canada");
         scoreboardManager.startMatch("Brazil", "Italy");
         scoreboardManager.startMatch("Congo", "India");

@@ -1,6 +1,7 @@
 package com.adedamola.scoreboard;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.security.PrivateKey;
@@ -76,5 +77,15 @@ public class ScoreboardTest {
     }
 
 
+    @Test
+    public void testUpdateScore() {
+        scoreboardManager.startMatch("Mexico", "Canada");
+        scoreboardManager.updateScore("Mexico", "Canada", 4, 5);
+
+        List<Match> matches = scoreboardManager.getMatchesSummary();
+        Match match = matches.get(0);
+        Assertions.assertEquals(4, match.getHomeScore());
+        Assertions.assertEquals(5, match.getAwayScore());
+    }
 
 }

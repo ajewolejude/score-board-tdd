@@ -42,9 +42,10 @@ public class Scoreboard implements ScoreboardManager {
     @Override
     public void finishMatch(String homeTeam, String awayTeam) {
         Match match = findMatch(homeTeam, awayTeam);
-        if (match != null) {
-            matches.remove(match);
+        if (match == null) {
+            throw new IllegalArgumentException("Match does not exist");
         }
+        matches.remove(match);
     }
 
     private Match findMatch(String homeTeam, String awayTeam) {

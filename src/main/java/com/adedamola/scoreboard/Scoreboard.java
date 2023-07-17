@@ -41,7 +41,10 @@ public class Scoreboard implements ScoreboardManager {
 
     @Override
     public void finishMatch(String homeTeam, String awayTeam) {
-
+        Match match = findMatch(homeTeam, awayTeam);
+        if (match != null) {
+            matches.remove(match);
+        }
     }
 
     private Match findMatch(String homeTeam, String awayTeam) {

@@ -51,5 +51,12 @@ public class ScoreboardTest {
     }
 
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testStartMatchWithEmptyHomeTeam() {
+        ScoreboardManager scoreboard = new Scoreboard();
+        scoreboard.startMatch("", "Away Team");
+    }
+
+
 
 }

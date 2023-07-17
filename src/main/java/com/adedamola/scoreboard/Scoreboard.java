@@ -30,13 +30,20 @@ public class Scoreboard implements ScoreboardManager {
 
     @Override
     public void updateScore(String homeTeam, String awayTeam, int homeScore, int awayScore) {
+        Match match = findMatch(homeTeam, awayTeam);
+        if (match != null) {
+            match.setHomeScore(homeScore);
+            match.setAwayScore(awayScore);
+        }
+    }
+
+    private Match findMatch(String homeTeam, String awayTeam) {
         for (Match match : matches) {
             if (match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam)) {
-                match.setHomeScore(homeScore);
-                match.setAwayScore(awayScore);
-                break;
+                return match;
             }
         }
+        return null;
     }
 
 }

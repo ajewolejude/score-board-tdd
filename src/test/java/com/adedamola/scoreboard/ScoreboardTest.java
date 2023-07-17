@@ -102,6 +102,35 @@ public class ScoreboardTest {
     }
 
 
+    @Test
+    public void testReturnMatchSummary() {
+        scoreboardManager.startMatch("Mexico", "Canada");
+        scoreboardManager.updateScore("Mexico", "Canada", 4, 5);
+
+        List<Match> matches = scoreboardManager.getMatchesSummary();
+        Match match = matches.get(0);
+        Assertions.assertEquals(4, match.getHomeScore());
+        Assertions.assertEquals(5, match.getAwayScore());
+    }
+
+    @Test
+    public void testReturnMatchSummaryInOrderOfTotalGoals() {
+        scoreboardManager.startMatch("Mexico", "Canada");
+        scoreboardManager.startMatch("Spain", "Brazil");
+        scoreboardManager.startMatch("Morocco", "England");
+        scoreboardManager.updateScore("Mexico", "Canada", 2, 2);
+        scoreboardManager.updateScore("Spain", "Brazil", 7, 1);
+        scoreboardManager.updateScore("Morocco", "England", 0, 1);
+
+        List<Match> matches = scoreboardManager.getMatchesSummary();
+        Assertions.assertEquals(7, matches.get(0).getHomeScore());
+        Assertions.assertEquals(1, matches.get(0).getAwayScore());
+        Assertions.assertEquals(2, matches.get(1).getHomeScore());
+        Assertions.assertEquals(2, matches.get(1).getAwayScore());
+        Assertions.assertEquals(0, matches.get(2).getHomeScore());
+        Assertions.assertEquals(1, matches.get(2).getAwayScore());
+    }
+
 
 
 }

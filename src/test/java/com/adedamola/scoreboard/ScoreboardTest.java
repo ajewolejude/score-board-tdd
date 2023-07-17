@@ -93,6 +93,15 @@ public class ScoreboardTest {
         Assertions.assertEquals(2, matches.size());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testFinishMatchWhenTheNatchDoesNotExist() {
+        ScoreboardManager scoreboardManager = new Scoreboard();
+        scoreboardManager.startMatch("Spain", "Brazil");
+        scoreboardManager.startMatch("Morocco", "England");
+        scoreboardManager.finishMatch("Mexico", "Canada");
+    }
+
+
 
 
 }

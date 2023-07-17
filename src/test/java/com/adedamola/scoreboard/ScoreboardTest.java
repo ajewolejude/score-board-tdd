@@ -81,4 +81,18 @@ public class ScoreboardTest {
     }
 
 
+    @Test
+    public void testFinishMatch() {
+        scoreboardManager.startMatch("Mexico", "Canada");
+        scoreboardManager.startMatch("Spain", "Brazil");
+        scoreboardManager.startMatch("Morocco", "England");
+
+        scoreboardManager.finishMatch("Mexico", "Canada");
+
+        List<Match> matches = scoreboardManager.getMatchesSummary();
+        Assertions.assertEquals(2, matches.size());
+    }
+
+
+
 }

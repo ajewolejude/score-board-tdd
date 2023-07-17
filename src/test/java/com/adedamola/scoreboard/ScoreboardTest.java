@@ -146,6 +146,26 @@ public class ScoreboardTest {
         assertNotNull(summary);
     }
 
+    @Test
+    public void testReturnMatchSummaryWhenTwoMatchesHasSameGoals() {
+
+        scoreboardManager.startMatch("Mexico", "Canada");
+        scoreboardManager.startMatch("Morocco", "England");
+        scoreboardManager.startMatch("Qatar", "Egypt");
+        scoreboardManager.startMatch("Spain", "Brazil");
+        scoreboardManager.updateScore("Mexico", "Canada", 2, 2);
+        scoreboardManager.updateScore("Spain", "Brazil", 7, 1);
+        scoreboardManager.updateScore("Qatar", "Egypt", 7, 1);
+        scoreboardManager.updateScore("Morocco", "England", 0, 1);
+
+
+        List<Match> matches = scoreboardManager.getMatchesSummary();
+        Assertions.assertEquals("Qatar", matches.get(0).getHomeTeam());
+        Assertions.assertEquals("Egypt", matches.get(0).getAwayTeam());
+        Assertions.assertEquals("Spain", matches.get(1).getHomeTeam());
+        Assertions.assertEquals("Brazil", matches.get(1).getAwayTeam());
+    }
+
 
 
 }

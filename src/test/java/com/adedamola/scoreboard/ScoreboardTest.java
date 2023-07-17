@@ -30,7 +30,7 @@ public class ScoreboardTest {
     }
 
     @Test
-    public void testStartMatchAndCheckMatchesStarted() {
+    public void testStartOneMatch() {
          scoreboardManager = new Scoreboard();
         String homeTeam = "Mexico";
         String awayTeam = "Canada";
@@ -38,6 +38,16 @@ public class ScoreboardTest {
         scoreboardManager.startMatch(homeTeam, awayTeam);
         List<Match> matches = scoreboardManager.getMatchesSummary();
         assertEquals(1, matches.size());
+    }
+
+    @Test
+    public void testStartMultipleMatchesAndCheckSummary() {
+        scoreboardManager = new Scoreboard();
+        scoreboardManager.startMatch("Mexico", "Canada");
+        scoreboardManager.startMatch("Brazil", "Italy");
+        scoreboardManager.startMatch("Congo", "India");
+        List<Match> matches = scoreboardManager.getMatchesSummary();
+        assertEquals(3, matches.size());
     }
 
 

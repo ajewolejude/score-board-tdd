@@ -2,7 +2,7 @@ package com.adedamola.scoreboard;
 
 import java.util.*;
 
-public class Scoreboard implements ScoreboardManager {
+public class Scoreboard extends ScoreboardSummaryFormatter implements ScoreboardManager {
 
     private List<Match> matches;
 
@@ -25,6 +25,15 @@ public class Scoreboard implements ScoreboardManager {
         List<Match> summary = new ArrayList<>(matches);
         Collections.sort(summary, Comparator.comparing(Match::getTotalScore).reversed());
         return summary;
+    }
+
+    @Override
+    protected String formatMatchesSummary(List<Match> summary) {
+        return super.formatMatchesSummary(summary);
+    }
+
+    public String getFormattedMatchesSummary() {
+        return formatMatchesSummary(getMatchesSummary());
     }
 
     @Override

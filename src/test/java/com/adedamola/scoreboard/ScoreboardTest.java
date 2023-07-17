@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class ScoreboardTest {
-    private ScoreboardManager scoreboardManager =  new Scoreboard();
+    private Scoreboard scoreboardManager =  new Scoreboard();
 
     @Test
     public void testStartMatch() {
@@ -140,6 +140,7 @@ public class ScoreboardTest {
         scoreboardManager.updateScore("Mexico", "Canada", 2, 2);
         scoreboardManager.updateScore("Spain", "Brazil", 7, 1);
         scoreboardManager.updateScore("Morocco", "England", 0, 1);
+
 
         String summary = scoreboardManager.getFormattedMatchesSummary();
         assertNotNull(summary);

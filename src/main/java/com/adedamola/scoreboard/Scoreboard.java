@@ -12,8 +12,9 @@ public class Scoreboard implements ScoreboardManager {
     }
     @Override
     public void startMatch(String homeTeam, String awayTeam) {
-        if (homeTeam.equals("")) {
-            throw new IllegalArgumentException("Home team cannot be empty.");
+
+        if (homeTeam == null || homeTeam.equals("")) {
+            throw new IllegalArgumentException("Home team cannot be empty or null.");
         }
 
         Match match = new Match(homeTeam, awayTeam);

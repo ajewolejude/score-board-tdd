@@ -2,6 +2,7 @@ package com.adedamola.scoreboard;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Scoreboard implements ScoreboardManager {
 
@@ -13,8 +14,8 @@ public class Scoreboard implements ScoreboardManager {
     @Override
     public void startMatch(String homeTeam, String awayTeam) {
 
-        if (homeTeam == null || homeTeam.equals("")) {
-            throw new IllegalArgumentException("Home team cannot be empty or null.");
+        if (homeTeam == null || Objects.equals(homeTeam, "") || Objects.equals(awayTeam, "")) {
+            throw new IllegalArgumentException("Home team and Away Team cannot be empty, Home team cannot be null");
         }
 
         Match match = new Match(homeTeam, awayTeam);

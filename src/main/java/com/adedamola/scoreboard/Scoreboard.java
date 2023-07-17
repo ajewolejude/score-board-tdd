@@ -1,8 +1,6 @@
 package com.adedamola.scoreboard;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Scoreboard implements ScoreboardManager {
 
@@ -25,6 +23,7 @@ public class Scoreboard implements ScoreboardManager {
     @Override
     public List<Match> getMatchesSummary() {
         List<Match> summary = new ArrayList<>(matches);
+        Collections.sort(summary, Comparator.comparing(Match::getTotalScore).reversed());
         return summary;
     }
 
